@@ -1,19 +1,40 @@
 # -*- coding: utf-8 -*-
 
 from setuptools import setup, find_packages
+from configparser import ConfigParser
+
+def get_config(path='package_info.ini'):
+    cp = ConfigParser()
+    cp.read('package_info.ini')
+    config = cp['package']
+    return config
+
+def get_version(path='version'):
+    version = ""
+    with open('version', 'r') as f:
+        version = f.read().strip()
+    return version
+
+def get_requirements(path='requirements'):
+    reqs = []
+    try:
+        with open('requirements.txt', 'r') as f:
+            reqs =  f.read().split()
+        return reqs
+    except Exception:
+        return []
+
+config = get_config(path='package_info.ini')
 
 setup(
-    name                = 'logstash-logger',
-    version             = '1.0.0.1',
+    name                = config["name"],
+    version             = get_version(path='version'),
     description         = 'logstash logger module',
-    author              = 'segulee',
-    author_email        = 'segulee@gmail.com',
-    url                 = 'https://github.com/segulee/logstash_logger',
-    download_url        = 'https://github.com/segulee/logstash_logger/archive/1.0.0.1.tar.gz',
-    install_requires    = [
-        "python-logstash==0.4.6"
-    ],
-    packages            = find_packages(exclude = ['venv']),
+    author              = config["author"],
+    author_email        = config["author_email"],
+    url                 = config["url"],
+    install_requires    = get_requirements(path='requirements.txt'),
+    packages            = find_packages(exclude = ['venv', 'tests']),
     keywords            = ['logstash', 'python', 'logger'],
     python_requires     = '>=3',
 )

@@ -4,4 +4,6 @@ venv/
 # ide
 .vscode
 
-# code
+# setup
+dist/
+*.egg-info
