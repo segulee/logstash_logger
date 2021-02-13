@@ -1,1 +1,1 @@
-logstash logger
+emitter, logstash logger

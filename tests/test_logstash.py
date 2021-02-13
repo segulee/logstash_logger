@@ -2,7 +2,7 @@
 
 import unittest
 
-class LogstashLoggerTestCase(unittest.TestCase):
+class EmitterTestCase(unittest.TestCase):
     def setUp(self):
         pass
 
