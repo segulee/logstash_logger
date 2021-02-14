@@ -2,6 +2,7 @@
 
 import unittest
 
+
 class EmitterTestCase(unittest.TestCase):
     def setUp(self):
         pass
@@ -11,5 +12,3 @@ class EmitterTestCase(unittest.TestCase):
 
     def test_something(self):
         pass
-    
-
