@@ -10,7 +10,7 @@ class LogstashLogger:
     def __init__(self):
         pass
 
-    def get_logger():
+    def get_logger(self):
         logger = logging.getLogger()
 
         logger.setLevel(logging.INFO)
